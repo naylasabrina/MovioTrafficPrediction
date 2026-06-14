@@ -536,7 +536,7 @@ elif st.session_state.current_page == "Input CSV":
             
             # --- SEKSI 1: HANYA DATASET INPUT ASLI ---
             st.markdown("### 📄 Preview Dataset Input Asli")
-            st.dataframe(df_csv.head(5), use_container_width=True)
+            st.dataframe(df_csv.head(11), use_container_width=True)
             
             if st.button("Jalankan Batch Prediction", key="btn_utama_aksi_csv"):
                 with st.spinner("Model sedang memproses data..."):
