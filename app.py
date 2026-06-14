@@ -25,7 +25,7 @@ if 'history_csv' not in st.session_state:
     st.session_state.history_csv = []
 
 # ==========================================
-# 2. CUSTOM CSS FIXED TOTAL (ANTI BLANK PUTIH)
+# 2. CUSTOM CSS FIXED TOTAL (ANTI BLANK PUTIH) + RESPONSIVE HP
 # ==========================================
 st.markdown("""
     <style>
@@ -239,6 +239,48 @@ st.markdown("""
         transform: translateY(-2px);
         color: #ffffff !important;
     }
+
+    /* =======================================================
+       PERBAIKAN TOOLBAR DATAFRAME (KOTAK PUTIH POJOK KANAN)
+       ======================================================= */
+    [data-testid="stElementToolbar"] {
+        background-color: #15103c !important; /* Warna gelap senada tema */
+        border: 1px solid rgba(255, 255, 255, 0.1) !important;
+        border-radius: 8px !important;
+        padding: 2px !important;
+    }
+    
+    [data-testid="stElementToolbar"] button {
+        color: #cbd5e1 !important; /* Warna icon agak abu-abu terang */
+    }
+    
+    [data-testid="stElementToolbar"] button:hover {
+        background-color: #2e2a72 !important; /* Efek hover saat disentuh */
+        color: #ffffff !important;
+        border-radius: 6px !important;
+    }
+
+    /* =======================================================
+       KODE BARU: RESPONSIVE SCREEN UNTUK HP (MOBILE LAYOUT)
+       ======================================================= */
+    @media (max-width: 768px) {
+        .dashboard-grid-3, .dashboard-grid-2 {
+            grid-template-columns: 1fr !important; /* Ubah jadi 1 kolom ke bawah */
+            gap: 15px !important;
+        }
+        .nav-container {
+            flex-direction: column !important; /* Navbar susun vertikal di HP */
+            text-align: center !important;
+            gap: 10px !important;
+            padding: 15px !important;
+        }
+        .brand-title {
+            font-size: 22px !important;
+        }
+        .welcome-banner {
+            padding: 25px !important;
+        }
+    }
     </style>
 """, unsafe_allow_html=True)
 
@@ -325,7 +367,7 @@ def execute_prediction(df_raw, model_name):
 # ==========================================
 st.markdown("""
     <div class="nav-container">
-        <div class="brand-title">🚦 MOVIO PROJECT</div>
+        <div class="brand-title">🚦 MOVIO </div>
         <div style="color: #94a3b8; font-size: 14px; font-weight: 500;">Sistem Prediksi Kepadatan Lalu Lintas</div>
     </div>
 """, unsafe_allow_html=True)
@@ -359,13 +401,10 @@ if st.session_state.current_page == "Dashboard":
     st.markdown("""
         <div class='welcome-banner'>
             <h1>Selamat Datang di Aplikasi Movio!</h1>
-            <p>
-                Movio adalah platform analisis cerdas berbasis Machine Learning yang dirancang khusus untuk memetakan, 
-                menganalisis, dan memprediksi dinamika kondisi lalu lintas perkotaan demi mendukung efisiensi sistem transportasi jalan raya.
+            <p>Prediksi kondisi lalu lintas kini menjadi lebih mudah dengan MOVIO, platform berbasis Machine Learning yang dirancang untuk menganalisis pola kendaraan dan memberikan hasil prediksi kepadatan jalan secara cepat dan akurat.
             </p>
         </div>
     """, unsafe_allow_html=True)
-    
     st.markdown("<h3 class='sub-title'>⚙️ Apa yang Aplikasi Ini Lakukan?</h3>", unsafe_allow_html=True)
     st.markdown("""
         <div class='dashboard-grid-3'>
