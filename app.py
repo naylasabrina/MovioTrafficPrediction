@@ -424,6 +424,18 @@ if st.session_state.current_page == "Dashboard":
     """, unsafe_allow_html=True)
         
     st.markdown("<h3 class='sub-title'>📊 Informasi Karakteristik Dataset</h3>", unsafe_allow_html=True)
+    
+    # --- POSISI BARU: BARIS CARD LINK SUMBER DATASET ---
+    st.markdown("""
+        <div class='feature-card' style='border-left: 4px solid #20beff; background: rgba(32, 190, 255, 0.04); margin-bottom: 25px;'>
+            <h4 style='color: #20beff !important; margin-bottom: 8px;'>🌐 Sumber Dataset Resmi</h4>
+            <p>Dataset publik yang digunakan untuk melatih dan mengevaluasi model kecerdasan buatan pada aplikasi ini diambil secara resmi dari platform Kaggle: 
+            <a href='https://www.kaggle.com/datasets/hasibullahaman/traffic-prediction-dataset' target='_blank' style='color: #c084fc; text-decoration: underline; font-weight: 700;'>
+            Traffic Prediction Dataset oleh Hasibullah Aman 🔗
+            </a></p>
+        </div>
+    """, unsafe_allow_html=True)
+
     st.markdown("""
         <div class='dashboard-grid-3'>
             <div class='feature-card'>
@@ -525,6 +537,17 @@ elif st.session_state.current_page == "Input Manual":
 # --- HALAMAN INPUT CSV (PISAH DATASET & PREDIKSI) ---
 elif st.session_state.current_page == "Input CSV":
     st.markdown("<h2 class='sub-title'>📁 Batch Prediction Via File CSV</h2>", unsafe_allow_html=True)
+    
+    # --- PENAMBAHAN BARU: BARIS CARD PANDUAN KOLOM CSV USER ---
+    st.markdown("""
+        <div class='feature-card' style='border-left: 4px solid #a855f7; background: rgba(168, 85, 247, 0.04); margin-bottom: 25px;'>
+            <h4 style='color: #a855f7 !important; margin-bottom: 8px;'>📋 Panduan Aturan Format Kolom</h4>
+            <p>Pastikan berkas file <b>.CSV</b> yang dimasukkan telah memiliki struktur header dengan susunan nama kolom tepat seperti format di bawah ini:</p>
+            <div style='margin-top: 12px; padding: 10px 15px; background: rgba(0,0,0,0.25); border-radius: 8px; font-family: monospace; font-size: 13px; color: #e2e8f0; border: 1px solid rgba(255,255,255,0.05); overflow-x: auto;'>
+                CarCount, BikeCount, BusCount, TruckCount, Total, Day of the week, Hour
+            </div>
+        </div>
+    """, unsafe_allow_html=True)
     
     model_csv = st.selectbox("Pilih Konfigurasi Arsitektur ML", ["Decision Tree", "k-NN", "SVM"])
     file_unggahan = st.file_uploader("Unggah File CSV Anda", type=["csv"])
